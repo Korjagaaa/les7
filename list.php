@@ -1,12 +1,12 @@
 <?php
 $json = "json";
-$files_dir = "./tests";
-$files_list = scandir($files_dir);
-$jsn_files = [];
-for ($i = 0; $i < count($files_list); $i++){
-    $explode = explode(".", $files_list[$i]);
+$filesDir = "./tests";
+$filesList = scandir($filesDir);
+$jsnFiles = [];
+for ($i = 0; $i < count($filesList); $i++){
+    $explode = explode(".", $filesList[$i]);
     if ($explode[1] === $json){
-        array_push($jsn_files, $files_list[$i]);
+        array_push($jsnFiles, $filesList[$i]);
     }
 }
 ?>
@@ -26,7 +26,7 @@ for ($i = 0; $i < count($files_list); $i++){
 <div class="list">
     <ul>
         <?php
-        for ($i = 0; $i < count($jsn_files); $i++) {
+        for ($i = 0; $i < count($jsnFiles); $i++) {
             echo "<li><a href='test.php?id=".$i."'>Тест №".$i."</a></li>";
         }
         ?>

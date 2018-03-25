@@ -1,8 +1,8 @@
 <?php
-$test_dir = "./tests/";
-$test_id = $test_dir.$_GET["id"].".json";
-$json_file = file_get_contents($test_id);
-$json_array = json_decode($json_file, true);
+$testDir = "./tests/";
+$testId = $testDir.$_GET["id"].".json";
+$jsonFile = file_get_contents($testId);
+$jsonArray = json_decode($jsonFile, true);
 ?>
 
 <!DOCTYPE html>
@@ -19,18 +19,18 @@ $json_array = json_decode($json_file, true);
     </ul>
 </nav>
 <?php
-if (!file_get_contents($test_id)){
-    header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+if (!file_get_contents($testId)){
+    header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
     die();
 }
-$json_file = file_get_contents($test_id);
-$json_array = json_decode($json_file, true);
+$jsonFile = file_get_contents($testId);
+$jsonArray = json_decode($jsonFile, true);
 ?>
 <form action="diplom.php" method="POST">
     <?php
         echo "<pre>";
         $i = 0;
-        foreach ($json_array as $questions) {
+        foreach ($jsonArray as $questions) {
             echo "<fieldset><legend>".$questions["question"]."</legend>";
             foreach ($questions["answers"] as $answer) {
                 echo "<label><input  value='".key($questions["answers"])."' type='radio' name='$i' required>".$answer."</label>";

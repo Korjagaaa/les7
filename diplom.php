@@ -1,11 +1,12 @@
 <?php
 header('Content-Type: image/png');
-$image = imagecreatetruecolor(300,300);
-$text_color = imagecolorallocate($image,777,777,777);
-$background_color = imagecolorallocate($image, 255,255,255);
-imagefill($image,0,0,$background_color);
-imagettftext($image,30, 0, 55, 50,$text_color,$font_file,$_POST["name"]);
-imagettftext($image,30, 0, 70, 120,$text_color,$font_file,"оценка");
+$image = imagecreatetruecolor(400,400);
+$fontFile = 'fonts/OpenSans.ttf';
+$textColor = imagecolorallocate($image,255,0,0);
+$backgroundColor = imagecolorallocate($image,255,255,255);
+imagefill($image,0,0,$backgroundColor);
+imagettftext($image,20, 0, 20, 50,$textColor,$fontFile,$_POST["name"]);
+imagettftext($image,20, 0, 20, 120,$textColor,$fontFile,"оценка");
 unset($_POST["name"]);
 $score = 0;
 foreach ($_POST as $item) {
@@ -24,6 +25,6 @@ elseif ($score < 80 ){
 elseif ($score <= 100){
     $score=5;
 }
-imagettftext($image,90, 0, 110, 250,$text_color,$font_file,$score);
+imagettftext($image,90, 0, 110, 250,$textColor,$fontFile,$score);
 imagepng($image);
 ?>
