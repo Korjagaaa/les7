@@ -12,7 +12,6 @@ if (isset($_FILES['myfile']['name']) && !empty($_FILES['myfile']['name'])) {
         echo "<script>alert(\"Можно загружать только файлы с разрешением json.\");</script>";
     } else {
         if ($_FILES['myfile']['error'] == UPLOAD_ERR_OK && move_uploaded_file($_FILES['myfile']['tmp_name'], "/var/www/user_data/franchuk/me/PHP/les7/tests/$fileNew")) {
-            echo "<script>alert(\"Файл с тестами успешно загружен\");</script>";
             header('Location:list.php');
   			exit;
         } else {

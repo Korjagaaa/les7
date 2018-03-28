@@ -20,8 +20,8 @@ $jsonArray = json_decode($jsonFile, true);
 </nav>
 <?php
 if (!file_get_contents($testId)){
-    header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-    die();
+    header('Location:404.php');
+    exit;
 }
 $jsonFile = file_get_contents($testId);
 $jsonArray = json_decode($jsonFile, true);
