@@ -3,6 +3,10 @@ $testDir = "./tests/";
 $testId = $testDir.$_GET["id"].".json";
 $jsonFile = file_get_contents($testId);
 $jsonArray = json_decode($jsonFile, true);
+if (!file_get_contents($testId)){
+    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found'); 
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +23,6 @@ $jsonArray = json_decode($jsonFile, true);
     </ul>
 </nav>
 <?php
-if (!file_get_contents($testId)){
-    header('Location:404.php');
-    exit;
-}
 $jsonFile = file_get_contents($testId);
 $jsonArray = json_decode($jsonFile, true);
 ?>
